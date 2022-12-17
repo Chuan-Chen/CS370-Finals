@@ -1,0 +1,815 @@
+<h2 id="final-study-guide-cs370">Final Study Guide CS370</h2>
+<hr>
+<h3 id="general-terms-for-the-models-below">General Terms for the models below</h3>
+<ul>
+<li><p>User Requirements – User’s perspective (less technical maybe have User Story)</p>
+</li>
+<li><p>System Requirements – Actual design from the programmer’s perspective </p>
+</li>
+<li><p>Functional – specifically requested by the user. </p>
+</li>
+<li><p>Non-Functional – Implied by the Functional requirements. Can have greater impact because the system </p>
+</li>
+<li><p>Ethnography – Users may not use the software because it does match the way people work/think. For example, if my subway car has 100 seats only 80 seats might ever be used even if a subway seat is available someone may not want to sit next to someone else in a particular situation.</p>
+</li>
+<li><p>The requirements for a system are the descriptions of the services that a system should provide and the constraints on its operation.
+The process of finding out, analyzing, documenting
+and checking these services and constraints is called requirements engineering (RE).
+Functional requirements, as the name suggests, have traditionally focused on
+what the system should do.
+Even if the software is being re-used there is a need for requirements, in this case, mostly data requirements and also configuration.
+Ideally, the functional requirements specification of a system should be both
+While it is often possible to identify which system components implement specific
+functional requirements (e.g., there may be formatting components that implement
+reporting requirements), this is often more difficult with non-functional
+requirements. The implementation of these requirements may be spread throughout
+the system, for two reasons:</p>
+</li>
+</ul>
+<ol>
+<li><p>Non-functional requirements may affect the overall architecture of a system
+rather than the individual components. For example, to ensure that performance
+requirements are met in an embedded system, you may have to organize the
+system to minimize communications between components.</p>
+</li>
+<li><p>An individual non-functional requirement, such as a security requirement, may
+generate several, related functional requirements that define new system services
+that are required if the non-functional requirement is to be implemented.
+In addition, it may also generate requirements that constrain existing requirements;
+for example, it may limit access to information in the system.
+Product requirements These requirements specify or constrain the runtime
+behavior of the software. Examples include performance requirements for how
+fast the system must execute and how much memory it requires; reliability
+requirements that set out the acceptable failure rate; security requirements; and
+usability requirements.</p>
+</li>
+<li><p>Organizational requirements These requirements are broad system requirements
+derived from policies and procedures in the customer’s and developer’s
+organizations. Examples include operational process requirements that define
+how the system will be used; development process requirements that specify the</p>
+</li>
+</ol>
+<p>programming language; the development environment or process standards to
+be used; and environmental requirements that specify the operating environment
+of the system.</p>
+<ol start="3">
+<li>External requirements This broad heading covers all requirements that are
+derived from factors external to the system and its development process. These
+may include regulatory requirements that set out what must be done for the system
+to be approved for use by a regulator, such as a nuclear safety authority;
+legislative requirements that must be followed to ensure that the system operates
+within the law; and ethical requirements that ensure that the system will be
+acceptable to its users and the general public.</li>
+</ol>
+<ul>
+<li><p>Component testing, where several individual units are integrated to create composite components. Component testing should focus on testing the component
+interfaces that provide access to the component functions.</p>
+</li>
+<li><p>Interface misuse A calling component calls some other component and makes an
+error in the use of its interface. This type of error is common in parameter interfaces,
+where parameters may be of the wrong type or be passed in the wrong
+order, or the wrong number of parameters may be passed.</p>
+</li>
+<li><p>Interface misunderstanding A calling component misunderstands the specification
+of the interface of the called component and makes assumptions about its behavior.
+The called component does not behave as expected, which then causes unexpected
+behavior in the calling component. For example, a binary search method may be
+called with a parameter that is an unordered array. The search would then fail.</p>
+</li>
+<li><p>Timing errors For example, slow dataset queries will timeout. Solution, quicker queries or change timeout.</p>
+</li>
+<li><p>Failure Testing - Where a component is called through a procedural interface, design tests that deliberately cause the component to fail. Differing failure assumptions are one
+of the most common specification misunderstandings.
+Make sure that code fails when it should fail. For example if you are storing too many items in an array it should crash. Another example, bad code should cause an error from the compiler.</p>
+</li>
+<li><p>Stress testing in message passing systems. This means that you should
+design tests that generate many more messages than are likely to occur in practice.
+This is an effective way of revealing timing problems.
+For example, testing a website to see if it can handle all the traffic.</p>
+</li>
+<li><p>Shared Memory Testing Where several components interact through shared memory, design tests that vary the order in which these components are activated. These tests may reveal implicit assumptions made by the programmer about the order in which the
+shared data is produced and consumed.</p>
+</li>
+<li><p>System Testing where some or all of the components in a system are integrated
+and the system is tested as a whole. System testing should focus on testing component
+interactions.
+ Find inputs or input sequences where the behavior of the software is incorrect,
+undesirable, or does not conform to its specification. These are caused by defects
+(bugs) in the software. When you test software to find defects, you are trying to
+root out undesirable system behavior such as system crashes, unwanted interactions
+with other systems, incorrect computations, and data corruption.</p>
+</li>
+<li><p>Release testing, where a separate testing team tests a complete version of the
+system before it is released to users. The aim of release testing is to check that
+the system meets the requirements of the system stakeholders.</p>
+</li>
+<li><p>Demonstrate to the developer and the customer that the software meets its
+requirements. For custom software, this means that there should be at least one
+test for every requirement in the requirements document. For generic software
+products, it means that there should be tests for all of the system features that
+will be included in the product release. You may also test combinations of features
+to check for unwanted interactions between them.</p>
+</li>
+</ul>
+<p>Release testing is the process of testing a particular release of a system that is intended
+for use outside of the development team. Normally, the system release is for customers
+and users. In a complex project, however, the release could be for other teams that are
+developing related systems. For software products, the release could be for product
+management who then prepare it for sale.
+There are two important distinctions between release testing and system testing
+during the development process:</p>
+<ol>
+<li>The system development, team should not be responsible for release testing.</li>
+<li>Release testing is a process of validation checking to ensure that a system meets
+its requirements and is good enough for use by system customers. System testing
+by the development team should focus on discovering bugs in the system
+(defect testing).
+The primary goal of the release testing process is to convince the supplier of the
+system that it is good enough for use. If so, it can be released as a product or delivered
+to the customer. Release testing, therefore, has to show that the system delivers
+its specified functionality, performance, and dependability, and that it does not fail
+during normal use.</li>
+</ol>
+<ul>
+<li>Release testing is usually a black-box testing process whereby tests are derived
+from the system specification. The system is treated as a black box whose behavior
+can only be determined by studying its inputs and the related outputs. Another name
+for this is functional testing, so-called because the tester is only concerned with
+functionality and not the implementation of the software.
+Two ways to do release testing <ul>
+<li>Requirements-based testing</li>
+<li>Scenario Testing</li>
+</ul>
+</li>
+</ul>
+<p>User testing/ Acceptance Testing, where users or potential users of a system test the system in their
+own environment. For software products, the “user” may be an internal marketing
+group that decides if the software can be marketed, released and sold.
+Acceptance testing is one type of user testing where the customer formally tests
+a system to decide if it should be accepted from the system supplier or if further
+development is required.</p>
+<ol>
+<li>Alpha testing, where a selected group of software users work closely with the
+development team to test early releases of the software.</li>
+<li>Beta testing, where a release of the software is made available to a larger group
+of users to allow them to experiment and to raise problems that they discover
+with the system developers.</li>
+<li>Acceptance testing, where customers test a system to decide whether or not it is ready to be accepted from the system developers and deployed in the customer environment</li>
+</ol>
+<ul>
+<li>Testing can only show the presence of errors in a program. It cannot show that there are no remaining faults.</li>
+<li>Development testing is the responsibility of the software development team. A separate team should be responsible for testing a system before it is released to customers. 
+In the user testing process, customers or system users provide test data and check that tests are successful.</li>
+<li>Development testing includes unit testing where you test individual objects and methods; component testing in which you test related groups of objects; and system testing in which you test partial or complete systems.</li>
+<li>When testing software, you should try to “break” the software by using experience and
+guidelines to choose types of test cases that have been effective in discovering defects in other systems.</li>
+<li>Wherever possible, you should write automated tests. The tests are embedded in a program that can be run every time a change is made to a system.</li>
+<li>Test-first development i( also Test Driven Development) is an approach to development whereby tests are written before the code to be tested. Small code changes are made, and the code is refactored until all tests execute
+successfully.</li>
+<li>Scenario testing is useful because it replicates the practical use of the system. It involves inventing a typical usage scenario and using this to derive test cases.</li>
+<li>Acceptance testing is a user testing process in which the aim is to decide if the software is good enough to be deployed and used in its planned operational environment.</li>
+</ul>
+<p>Process Models
+We will be covering all of Chapter 2 until the end of chapter where Process Improvement is discussed
+What is a process model (SDLC)? 
+Note: Even if you have no planning that is also a process model (Big Bang Model)
+Process Model (Software Development Life Cycle)– Direct how we intend to develop the software
+A system how we decide we are going to develop software, i.e. how we are going about the processes of requirements, design, implementation, validation, and evolution (maintenance).</p>
+<hr>
+<h3 id="software-development-models">Software Development Models</h3>
+<hr>
+<ol>
+<li>[Waterfall_Model]<ul>
+<li>Requirements</li>
+<li>Feasiblity</li>
+<li>Design</li>
+<li>Development</li>
+<li>Documentation</li>
+<li>Release</li>
+<li>Maintenanace/Evolution</li>
+</ul>
+</li>
+</ol>
+<img src = "https://i.imgur.com/5NTccUX.png">
+
+<p>[Waterfall_Definiton]: The waterfall model is a classical model used in system development life cycle to create a system with a linear and sequential approach. It is termed as waterfall because the model develops systematically from one phase to another in a downward fashion.
+If at the end we discover a need to go back to a previous step, then we need to repeat all the steps that are down stream from that step. I.E. If we have to change a feature then we go to the first step and then repeat all the other steps afterwards (for that feature).</p>
+<p>[Waterfall_+] Pros</p>
+<ul>
+<li>Simple projects or smaller companies with clear and <b>unchanging requirements </b></li>
+<li>Embedded systems, Systems that works directly with hardware – expensive to change the hardware when software changes.</li>
+<li>Critical System,regulated (Medical – PaceMaker, DaVincii System FDA approved, Flight FAA, or Car software especially self driving car software NHTSA)</li>
+<li>Distributed Systems (many development groups are working on the same project – any changes will affect all groups)</li>
+</ul>
+<p>[Waterfall_-] Cons</p>
+<ul>
+<li>Complex Projects</li>
+<li>Changes in project or even a chance of change does not fit waterfall model</li>
+<li>Developers cannot start on development until the first requirement is met which is &quot;Requirements&quot;</li>
+<li>Client will not see the product until it is completed</li>
+</ul>
+<hr>
+<pre><code>Note: Bolded are what he highlights on his reviewsheet but the other are from his image see below.
+</code></pre>
+<ol start="2">
+<li>Intergration and Configuration model<ul>
+<li><b>Requirements</b><ul>
+<li><b>Software discovery</b></li>
+<li>Software evaluation</li>
+</ul>
+</li>
+<li><b>Requirements refinement</b><ul>
+<li>(Application System Available)<b>Configure</b> application system</li>
+<li>(Components Available)<ul>
+<li><b>Adapt Componets</b>, Develop new componets<ul>
+<li><b>Intergrate System</b></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<img src = "https://i.imgur.com/11r0Txe.png">
+
+<p>[Intergration_Configuration_Definition]: another way of saying re-using software</p>
+<p>[Intergration_Configuration_Re-Use]: </p>
+<ol>
+<li>Standalone applications. ie ms word</li>
+<li>Component/libraries</li>
+<li>Web services</li>
+</ol>
+<p>[Intergration_Configuration_+]:</p>
+<ul>
+<li>Saves time and money because the components have been tested, designed and coded.</li>
+</ul>
+<h2 id="intergration_configuration_-----no-control-over-code---code-needs-to-be-licensed-since-it-doesnt-belong-to-you---the-developer-may-retire">[Intergration_Configuration_-]: 
+- No Control over code
+- Code needs to be licensed since it doesn&#39;t belong to you.
+- The developer may retire.</h2>
+<ol start="3">
+<li>V-Model<img src = "https://www.scnsoft.com/blog-pictures/custom-software-development/2-v-model-.png"></li>
+</ol>
+<p>[V-Model_Definiton]: Create the tests for each level at the same time we design that level
+(i.e. architectural tests when designing architecture and feature tests when doing requirements)</p>
+<p>[V-Model_+]:</p>
+<ul>
+<li>Very scrict.</li>
+<li>Projects where failures and downtimes are unacceptable. ie medical software, aviation software</li>
+</ul>
+<p>[V-Model_-]:</p>
+<ul>
+<li>Will not work well with products that are fluid hard to change</li>
+</ul>
+<hr>
+<h3 id="the-following-models-follow-the-agile_manifesto">The following models follow the [agile_manifesto]</h3>
+<ul>
+<li><p>User Stories</p>
+<ul>
+<li>as a,</li>
+<li>I want to</li>
+<li>so that,</li>
+<li>it is fixed when </li>
+<li>ex: “As a [persona], I [want to], [so that].”
+As Max, I want to invite my friends, so we can enjoy this service together.
+As Sascha, I want to organize my work, so I can feel more in control. 
+As a manager, I want to be able to understand my colleagues&#39; progress, so I can better report our success and failures.</li>
+</ul>
+</li>
+<li><p>Refactoring: fixing spaghetti code</p>
+</li>
+<li><p>Test Driven Development (TDD) or Unit Tests</p>
+</li>
+<li><p>Use Case Diagram/Table</p>
+<ul>
+<li>Actor – anyone or anything that performs a behavior (who is using the system)</li>
+<li>Stakeholder – someone or something with vested interests in the behavior of the system under discussion (SUD)</li>
+<li>Preconditions – what must be true or happen before and after the use case runs.</li>
+<li>Triggers – this is the event that causes the use case to be initiated.</li>
+<li>Main success scenarios [Basic Flow] – use case in which nothing goes wrong.</li>
+<li>Alternative paths [Alternative Flow] – these paths are a variation on the main theme. These exceptions are what happen when things go wrong at the system level</li>
+<li>Outcome: Result .</li>
+</ul>
+</li>
+</ul>
+<img src = "https://i.imgur.com/08VHLx6.png">
+
+<p>Use actual use case (table) is a detailed view of requirements and 
+a user story/scenario is a high-level view.</p>
+<ol>
+<li><p>The actor(s): This is the person or group of people interacting with the system. They are the users of the system. For example, an accountant or a CEO or account holder.</p>
+</li>
+<li><p>The goal: This is the outcome for which the use case was designed. It is usually the result of this process. For example, “user logged in” is the goal for Sign On screen.</p>
+</li>
+<li><p>Preconditions: It is the combination of all factors necessary for the case to occur. For example, if a user went to my web site and clicked sign in. Basically, this is where my code will begin.</p>
+</li>
+<li><p>Triggers: What sets the use case in motion. I am notified that a user wishes to Sign In.</p>
+</li>
+<li><p>Main success scenarios [Basic Flow] – use case in which nothing goes wrong. 
+Probably include images of what the user should see on the screen.</p>
+</li>
+<li><p>Alternative paths [Alternative Flow] – these paths are a variation on the main theme. These exceptions are what happen when things go wrong at the system level. i.e. user forgot password or password fails 3 times</p>
+</li>
+<li><p>Post Conditions: What will be achieved after my paths. User will be signed in and able to withdraw money.</p>
+</li>
+<li><p>The informality of agile development is incompatible with the legal approach to
+contract definition that is commonly used in large companies.</p>
+</li>
+<li><p>Agile methods are most appropriate for new software development rather than
+for software maintenance. Yet the majority of software costs in large companies
+come from maintaining their existing software systems.</p>
+</li>
+<li><p>Agile methods are designed for small co-located teams, yet much software
+development now involves worldwide distributed teams.</p>
+</li>
+</ol>
+<ol start="4">
+<li>Code will be unorganized from all the changes</li>
+<li>Management isn’t clear on the progress of the project because the project is always changing.</li>
+</ol>
+<p>User Story – from the perspective of the User.
+User Story – As an editor (user) I need to write an essay (action) and save it so I can do my job (result or value statement).
+This will be completed when I can write and save my essay (Acceptance Criteria).</p>
+<ol>
+<li>User Stories Must Always Have a User!</li>
+<li>User stories capture what the user wants to achieve in a simple sentence</li>
+<li>User stories contain a qualifying value statement</li>
+<li>User stories contain acceptance criteria</li>
+</ol>
+<hr>
+<ol start="4">
+<li>Incremental Model<ul>
+<li>Concurrent activties<ul>
+<li>Specification<ul>
+<li>Initial version</li>
+</ul>
+</li>
+<li>Development<ul>
+<li>Intermediate version</li>
+</ul>
+</li>
+<li>Validation<ul>
+<li>Final version</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<img src = "https://i.imgur.com/PG0t772.png">
+
+<p>[Incremental_Definition]: Start with an outline of general requirements
+Then we have a loop through the general requirements producing a chunk at a at time.
+Each chunk will have a complete requirement, design, implementation, and testing phase.
+When the last chunk has been completed project is done.</p>
+<p>[Incremental_+]:</p>
+<ul>
+<li>Easy to intergrate because it is structured the way developers think</li>
+<li>changes are easy to make in this model</li>
+<li>Quicker feedback</li>
+<li>Easy delivery, possible to deliver partially completed projects</li>
+</ul>
+<p>[Incremental_-]:</p>
+<ul>
+<li>Hard to document</li>
+<li>Spaghetti code, each iteration is adding new fetures</li>
+<li>code needs to be refactored</li>
+<li>Client confused because they don&#39;t end up with the finish product.</li>
+</ul>
+<hr>
+<ol start="5">
+<li>SCRUM/Xtream Programming<ul>
+<li>Sprint 1<ul>
+<li>Plan <ul>
+<li>Design<ul>
+<li>Develop<ul>
+<li>Test<ul>
+<li>Deploy working increment</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Review</li>
+</ul>
+</li>
+<li>Sprint 2 (same as sprint 1 takes as long as it needs to product completion)</li>
+<li>Spring 3</li>
+</ul>
+</li>
+</ol>
+<img src = "https://www.scnsoft.com/blog-pictures/custom-software-development/6-scrum-.png">
+
+<p>[SCRUM_Definition]: product owner/daily meetings(scrum is a meeting)/sprint should take 2 -4 weeks/product backlog/any iteration/sprint can produce a potentially shippable system</p>
+<p>[SCRUM_+]:</p>
+<ul>
+<li>Great when end user feedback is required</li>
+<li>Mid-sized projects for where business requirements cannot be directly stated</li>
+<li>Large-sized projects that are easily broken down into smaller parts.</li>
+</ul>
+<p>[SCRUM_-]:</p>
+<ul>
+<li>Only works with experianced team members</li>
+<li>chances of project failure is high due to &#39;no end&#39; in sight</li>
+</ul>
+<img src = "https://i.imgur.com/HlntMDa.png">
+
+<hr>
+<h3 id="diagrams">Diagrams</h3>
+<hr>
+<ul>
+<li>Sequence diagram<img src = "https://i.imgur.com/1xBYP16.png"></li>
+<li>Use Case Diagram – Actor and Use Cases (activities)<img src = "https://i.imgur.com/08VHLx6.png"></li>
+<li>Use Case Table
+<img src = "https://i.imgur.com/ntbSl1z.png">&gt;</li>
+<li>State Diagram<img src = "https://i.imgur.com/iM0SVZ7.png"></li>
+<li>Activity Diagram<img src = "https://i.imgur.com/mrMIcb1.png">
+<img src = "https://i.imgur.com/C99lrDe.png"></li>
+<li>Class Diagram (Inheritance/Composition/aggregation/multiplicity(cardinality)/dependency)<img src = "https://i.imgur.com/pt4TTBD.png"></li>
+<li>Swim Lanes<img src = "https://grapholite.com/Images/SwimlaneTemplate.png">
+<img src = "https://grapholite.com/Images/SwimlaneTemplate.png"></li>
+<li>Context Diagram<img src = "https://i.imgur.com/qgrnXrP.png"></li>
+<li>Actor<img src = "https://sourcemaking.com/files/sm/images/uml/img_20.jpg"></li>
+<li>Starting point/Ending point<img src = ""></li>
+<li>Transitions/ Transformations<img src = ""></li>
+<li>Return messages<img src = ""></li>
+<li>Messages<img src = ""></li>
+<li>Time<img src = ""></li>
+</ul>
+<hr>
+<h3 id="design-patterns">Design Patterns</h3>
+<p>What are design patterns and how do they help us?
+Design Patterns are designs that were found to be used by programmers to solve existing design issues. We don’t need to reinvent the wheel; someone has a solution already.</p>
+<p>Way of communicating with other programmers quickly.</p>
+<hr>
+<ul>
+<li><p>Observer Pattern - Without changing code we can add or remove listeners, Open Closed Closed Principle</p>
+</li>
+<li><p>Open Closed Principle – open for extension closed for modification</p>
+</li>
+<li><p>Strategy – Encapsulate changing behavior in a class. Without changing code or adding inheritance we can change behavior of class, Open Closed Principle, Dependency Injection, Composition over inheritance, Dependency Inversion uses an interface for the behavior.</p>
+</li>
+<li><p>Dependency Injection (pass in a database object to the accounting class)</p>
+</li>
+<li><p>Favor Composition Over Inheritance – because Inheritance too tightly coupled and therefore restrictive</p>
+</li>
+<li><p>Memento - Encapsulate the state of an object in another Object and store it outside the object – Caretaker – keeps history, Originator – Object creating the memento</p>
+</li>
+<li><p>Single Responsibility Principle – A class should only do one thing well</p>
+</li>
+<li><p>State Pattern - Have an object correspond to a given state</p>
+</li>
+<li><p>Encapsulate the code so we don’t change existing code when adding a new state</p>
+</li>
+<li><p>Decorator - call other objects in any order without modifying existing code
+we dont change existing code when calling another object</p>
+</li>
+<li><p>Singleton - One instance of an object 
+maybe not thread safe, global object – encapsulate a global objects</p>
+</li>
+<li><p>Iterator - hides the concrete collection from outside the class</p>
+</li>
+<li><p>Encapsulation - protections data collection using the iterator interface</p>
+</li>
+<li><p>Factory - hides the object construction - encapsulation</p>
+</li>
+<li><p>Builder Pattern - Fixes issue in many languages that have constructors which have no return value.</p>
+</li>
+</ul>
+<hr>
+<h3 id="testing-types">Testing Types</h3>
+<hr>
+<ol>
+<li>Unit Tests</li>
+<li>Partition Tests </li>
+<li>Guideline base Testing - eg passing null values will usually crash a program</li>
+<li>Black box testing - Tester has no knowledge of actual code</li>
+<li>White box testing - Tester has knowledge of actual code<ol>
+<li>Developer level - class level</li>
+<li>component testign - interaction within class/modules</li>
+<li>System test - test the whole system</li>
+<li>Release Test - anybody but the developer</li>
+<li>Acceptance Test - Done by the user to make sure they are happy</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li>When you test software, you are trying to do two things:<ul>
+<li>Features -Software performs the way it is supposed to.</li>
+<li>Defects - Software does not crash. 
+Most defects are caused because the developers made certain assumptions regarding how the program will be used that were incorrect.</li>
+</ul>
+</li>
+<li>TDD advantages (Test Driven Development i.e. Unit Tests)<ul>
+<li>Developer concentrates on the code he/she will develop.</li>
+<li>The company has a valid test that runs by itself.</li>
+</ul>
+</li>
+</ul>
+<pre><code>Five stages of testing: Development testing (unit testing) TDD Test Driven Development, Component testing, System Testing, Release testing, User testing
+</code></pre>
+<p>Development testing - where the system is tested during development to discover bugs and defects. System designers and programmers are likely to be involved
+in the testing process.</p>
+<ol>
+<li><p>Unit testing, where individual program units or object classes are tested. Unit
+testing should focus on testing the functionality of objects or methods.
+Cheapest impact because once the test is written the test can be run automatically.</p>
+</li>
+<li><p>Partition testing, where you identify groups of inputs that have common characteristics and should be processed in the same way. You should choose tests from
+within each of these groups.</p>
+<ul>
+<li><img src = "https://i.imgur.com/izS89a3.png"></li>
+</ul>
+</li>
+<li><p>Guideline-based testing, where you use testing guidelines to choose test cases.
+These guidelines reflect previous experience of the kinds of errors that programmers
+often make when developing components.
+Guidelines encapsulate knowledge of what kinds of test cases are effective for discovering errors. 
+For example, when you are testing programs with sequences, arrays, or lists,
+guidelines that could help reveal defects include:</p>
+<ol>
+<li>Test software with sequences that have only a single value. Programmers naturally
+think of sequences as made up of several values, and sometimes they
+embed this assumption in their programs. Consequently, if presented with a
+single-value sequence, a program may not work properly.</li>
+<li>Use different sequences of different sizes in different tests. This decreases the
+chances that a program with defects will accidentally produce a correct output
+because of some accidental characteristics of the input.</li>
+<li>Derive tests so that the first, middle, and last elements of the sequence are
+accessed. This approach reveals problems at partition boundaries.</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h3 id="architectural-pattern">Architectural Pattern</h3>
+<p>[Architectural_Pattern_Definition]: is a general, reusable solution to a commonly occurring problem in software architecture within a given context. Architectural patterns are similar to software design pattern but have a broader scope.</p>
+<h4 id="principles"><b>Principles</b></h4>
+<ol>
+<li><p><b>Performance</b> If performance is a critical requirement, the architecture should be
+designed to localize critical operations within a small number of components,
+with these components deployed on the same computer rather than distributed
+across the network. This may mean using a few relatively large components
+rather than small, finer-grain components. Using large components reduces the
+number of component communications, as most of the interactions between
+related system features take place within a component. You may also consider
+runtime system organizations that allow the system to be replicated and executed
+on different processors.
+Also we should minimize database and internet communication because these types of communication are very slow.
+E.g. Alexa machine – Only understands the word “Alexa” and then sends your voice to amazon and then amazon will figure out what to do and tells Alexa what to do. So performance is not an issue for Alexa because it is always slow because it works over the internet.
+A Tesla cannot use the same model as Alexa because a Tesla would crash before receiving a response from Tesla.</p>
+</li>
+<li><p><b>Security</b> If security is a critical requirement, a layered structure for the architecture
+should be used, with the most critical assets protected in the innermost layers
+and a high level of security validation applied to these layers.</p>
+</li>
+<li><p><b>Safety</b> If safety is a critical requirement, the architecture should be designed so
+that safety-related operations are co-located in a single component or in a small
+number of components. This reduces the costs and problems of safety validation
+and may make it possible to provide related protection systems that can safely
+shut down the system in the event of failure.</p>
+</li>
+<li><p><b>Availability</b> If availability is a critical requirement, the architecture should be
+designed to include redundant components so that it is possible to replace and
+update components without stopping the system. I describe fault-tolerant system
+architectures for high-availability systems in Chapter 11. 
+E.g. If a database goes down there is a rollover database to take over, every transaction must be saved in all databases (main data server and the rollover)</p>
+</li>
+<li><p><b>Maintainability</b> If maintainability is a critical requirement, the system architecture
+should be designed using fine-grain, self-contained components that may
+readily be changed. Producers of data should be separated from consumers, and
+shared data structures should be avoided.</p>
+</li>
+</ol>
+<hr>
+<ol>
+<li>Layered Pattern - The most commonly found 3 Layers of a general information system are as follows<ul>
+<li>Presentation layer (UI Layer)</li>
+<li>Business Logic layer (Domain Layer)</li>
+<li>Data Access layer (Presistence Layer)</li>
+</ul>
+</li>
+</ol>
+<p>[Usage]:</p>
+<ul>
+<li>General desktop Applications</li>
+<li>E commerece Web Applications</li>
+</ul>
+<p>[Benefits]: </p>
+<ul>
+<li>Easy to swap out one layer with another.</li>
+<li>Natural partition of work</li>
+</ul>
+<img src = "https://i.imgur.com/340zOzH.png">
+
+<hr>
+<ol start="2">
+<li>Client-Server Pattern - This pattern consist of two parties; a server and multiple client components. The server component will provide services to the multiple client components. Client request servicse from the server and the server provides relevant services to those clients. Furthermore, the server continues to listen to client requests. (Web browser/Web Server, Outlook/Microsoft Exchange
+)</li>
+</ol>
+<p>[Usage]: </p>
+<ul>
+<li>Applications such as email, websites, document sharing and banking</li>
+</ul>
+<p>[Benefits]: </p>
+<ul>
+<li>Easy to swap out server or client.</li>
+<li>Can have a thin client
+Downside </li>
+<li>latency (speed)</li>
+</ul>
+<p>[Downsides]:</p>
+<ul>
+<li>latency (speed)</li>
+</ul>
+<img src = "https://i.imgur.com/Byuqyk0.png">
+
+<hr>
+<ol start="3">
+<li>Pipe-filter Pattern - This pattern can be used to structure systems which produce and process a stream of data. Each processing step is enclosed within a filter component. Data to be processed is passed through pipes. These spipes can be used for buffering or for synchronization purposes.</li>
+</ol>
+<p>[Usage]:</p>
+<ul>
+<li>Compilers. The consecutive filters perform lexical analysis, parsing, semantic analysis, and code generation.</li>
+</ul>
+<p>[Benefits]: </p>
+<ul>
+<li>Easy to extend</li>
+</ul>
+<p>[Downsides]:</p>
+<ul>
+<li>Communicating between processes may be slow. i.e. they may communicate with a file.</li>
+</ul>
+<img src = "https://i.imgur.com/D31OzkW.png">
+
+<hr>
+<ol start="4">
+<li>Peer-to-peer pattern - In this pattern, individual components are known as peers. Peers may function both as a client request services from other peers, and as a server, prodiving services to other peers. A peer may act as a client or as a server or as both, and it can change its role dynamically with time.</li>
+</ol>
+<p>[Usage]: </p>
+<ul>
+<li>File-sharing networks (GNUTELLA, G2)</li>
+<li>Multimedia protocols (P2PTV, PDTP)</li>
+<li>Cryptocurrency-based products (Bitcoin, blockchain)</li>
+</ul>
+<p>[Benefits]: </p>
+<ul>
+<li>Distributed computing</li>
+</ul>
+<p>[Downsides]:</p>
+<ul>
+<li>allowing a program running on your machine that talks directly to other machines isn’t very secure.</li>
+</ul>
+<img src = "https://i.imgur.com/YHkj15Y.png">
+
+<hr>
+<ol start="5">
+<li><p>Model-View-Controller Pattern - This pattern, aka MVC pattern, divides an interactive application in to 3 parts.(below) this is done to separate internal representations of the information from the ways information is presented to, and accepted from, the user. It decouples components and allow efficent code reuse. (M = Model (business logic and DB V = View i.e. presentation C=Controller reacts to user input (for websites)- (business logic) view (presentation) -controller (part that controls the model and view))</p>
+<ol>
+<li>Model - Contains the core functionality and data</li>
+<li>View - displays the info to the user, more than one can be defined</li>
+<li>Controller - Handles the input from the user.</li>
+</ol>
+</li>
+</ol>
+<p>[Usage]: </p>
+<ul>
+<li>Architecture for (WWW) applications in major programming languages</li>
+<li>Web frameworks (Django, Rails)</li>
+</ul>
+<p>[Benefits]: </p>
+<ul>
+<li>similar to layered pattern except both model and view are on same
+Controller Model View</li>
+</ul>
+<p>[Downsides]:</p>
+<ul>
+<li>introduces complexity and is difficult to debug</li>
+</ul>
+<img src = "https://i.imgur.com/NVT0BjZ.png">
+
+<hr>
+<h3 id="oop-object-oriented-programming">OOP (Object Oriented Programming)</h3>
+<hr>
+<ol>
+<li>Inheritance</li>
+<li>Encapsulation (protect data)</li>
+<li>Polymorphism (different implementations of same method)</li>
+<li>Abstraction (make the code less complex)</li>
+</ol>
+<p>Problems with inheritance only.</p>
+<ol>
+<li>fragile base class - changing base class breaks the classes</li>
+<li>Class explosion - if you use inheritance for every type of object</li>
+<li>because the child class is stuck with all the parent’s code</li>
+</ol>
+<hr>
+<h3 id="misc">Misc</h3>
+<hr>
+<ul>
+<li><p>SOLID concepts are:
+Single-responsibility principle: &quot;There should never be more than one reason for a class to change.&quot; In other words, every class should have only one responsibility.[
+The Open–closed principle: &quot;Software entities ... should be open for extension but closed for modification.&quot;
+The Liskov substitution principle: &quot;Functions that use pointers or references to base classes must be able to use objects of derived classes without knowing it.&quot;[8] See also design by contract.[8]
+Rectangle = Area = L * H Square Area = L * L or H * H if square inherits rectangle then the area formula will not work
+The Interface segregation principle: &quot;Multiple specific interfaces are better than one general-purpose interface which cause the children to create unnecessary methods,
+The Dependency inversion principle: 
+A B C</p>
+</li>
+<li><p>High-level modules should not import anything from low-level modules. Both should depend on abstractions (e.g., interfaces).
+Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.</p>
+</li>
+</ul>
+<pre><code>// telling the user their balance
+class factory
+{
+   GetData  getDataReader()
+{
+       return new ReadTable();
+}
+}
+interface GetData
+{
+}
+class CalculateBalance
+{
+   // use an interface type
+GetData getData = new factory.getDataReader();	
+}
+
+// reads the database
+class ReadTable implements GetData{
+   
+}
+// neither Read Table or CalculateBalance know about each other
+// therefore we are using dependency inversion
+</code></pre>
+<ul>
+<li>DRY – Don’t repeat yourself - extract common code into a single function
+Encapsulate What Changes - code that changes should be seperated</li>
+<li>Favor Composition over Inheritance </li>
+<li>Programming for Interface not implementation (same as dependency inversion)
+You should use interface type on variables, return types of a method or argument type of methods in Java like return Shape object rather than Rectangle object</li>
+<li>Delegation principle- i.e . Draw Method - each object should have its own draw method </li>
+<li>Parent classes should not do work for their children
+Don’t do all stuff by yourself, delegate it to the respective class. Classical example of delegation design principle is equals() and hashCode() method in Java.</li>
+</ul>
+<hr>
+<h3 id="terms">Terms</h3>
+<hr>
+<ul>
+<li>GUI – Graphical User Interface</li>
+<li>Design Pattern</li>
+<li>SCRUM</li>
+<li>Heterogeneity</li>
+<li>Security</li>
+<li>Scalable,</li>
+<li>Dev Ops – continuous integration</li>
+<li>OOP </li>
+<li>Dependability</li>
+<li>Software Engineering - definition Software projects should be - - - professionally managed and developed</li>
+<li>Different techniques are appropriate for different types of systems. </li>
+<li>Safety critical control systems require a complete and analyzable specification to be developed.</li>
+<li>Different methods and techniques are needed for different project types</li>
+<li>Computer Science focuses on theory and fundamentals; </li>
+<li>Software Engineering is concerned with the practicalities of developing and delivering useful software.</li>
+</ul>
+<p>Types of applications</p>
+<ol>
+<li>Stand-alone application</li>
+<li>Interactive transaction-based applications </li>
+<li>Embedded control systems </li>
+<li>Batch processing systems</li>
+</ol>
+<p>Design Patterns – decouple code</p>
+<ul>
+<li>Factory Pattern</li>
+<li>Observer</li>
+<li>Singleton Pattern</li>
+<li>State</li>
+<li>builder pattern</li>
+</ul>
+<p>OOPS
+4 basic –
+Abstraction
+Encapsulation
+Polymorphism
+Inheritance</p>
+<ul>
+<li>Dependency Inversion
+Don’t Repeat Yourself
+Single Responsibility Principle
+IS-A</li>
+</ul>
+<p>HAS A 
+– Composition 2 types Aggregation and Composition
+interface segregation principle
+Open Closed Principle
+Liskov Substitution Principle
+SRP
+Prefer Composition to inheritance</p>
